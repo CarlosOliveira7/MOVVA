@@ -1,0 +1,13 @@
+services:
+  react-app:
+    build:
+      context: ./movva
+      dockerfile: ../Dockerfile.dev
+    container_name: movva_frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./movva:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true

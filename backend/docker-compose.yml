@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: movva_pgsql
+    restart: always
+    environment:
+      - POSTGRES_USER=movva
+      - POSTGRES_PASSWORD=movva
+      - POSTGRES_DB=movva_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+volumes:
+  postgres_data:
