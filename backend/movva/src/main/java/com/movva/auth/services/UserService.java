@@ -14,19 +14,19 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
-    public User registerUser(String username, String password) {
+    public User registerUser(String email, String password) {
         String encryptedPassword = passwordEncoder.encode(password);
-        User user = new User(username, encryptedPassword);
+        User user = new User(email, encryptedPassword);
         return userRepository.save(user);
     }
 
-    public Optional<User> FindByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public Optional<User> FindByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 
 

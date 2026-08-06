@@ -27,10 +27,10 @@ public class JwtUtil {
     }
 
 
-    public String generateToken(String username) {
+    public String generateToken(String email) {
 
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(email)
                 .setExpiration(
                     new Date(System.currentTimeMillis() + expirationTime)
                 )
@@ -39,7 +39,7 @@ public class JwtUtil {
     }
 
 
-    public String extractUsername(String token) {
+    public String extractEmail(String token) {
 
         return Jwts.parserBuilder()
                 .setSigningKey(key)

@@ -18,12 +18,13 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        com.movva.auth.entities.User userEntity = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado com o username: " + username));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        
+        com.movva.auth.entities.User userEntity = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado com o email: " + email));
 
         return User.builder()
-                .username(userEntity.getUsername())
+                .username(userEntity.getEmail())
                 .password(userEntity.getPassword())
                 .roles("USER")
                 .build();

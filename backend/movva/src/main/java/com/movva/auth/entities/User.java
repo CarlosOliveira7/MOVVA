@@ -18,7 +18,7 @@ public class User {
     private Long id;
 
     @Column(unique=true,nullable = false)
-    private String username;
+    private String email;
 
     @Column(nullable = false)
     private String password;
@@ -29,8 +29,8 @@ public class User {
 
     public User() {}
 
-    public User(String username,String password) {
-        this.username = username;
+    public User(String email,String password) {
+        this.email = email;
         this.password = password;
     }
 
@@ -38,8 +38,8 @@ public class User {
         return this.id;
     }
 
-    public String getUsername() {
-        return this.username;
+    public String getEmail() {
+        return this.email;
     }
 
     public String getPassword() {
@@ -53,8 +53,8 @@ public class User {
         this.id = id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setPassword(String password) {
@@ -73,7 +73,7 @@ public class User {
         if (!(o instanceof User))
             return false;
         User User = (User) o;
-        return Objects.equals(this.id, User.id) && Objects.equals(this.username, User.username)
+        return Objects.equals(this.id, User.id) && Objects.equals(this.email, User.email)
                 && Objects.equals(this.role, User.role);
     }
 }
